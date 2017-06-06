@@ -1,0 +1,10 @@
+USE cs134136
+
+drop table IF EXISTS TAKES;
+drop table IF EXISTS CONDUCTEDIN;
+drop table IF EXISTS EXAM;
+drop table IF EXISTS ENROLLS;
+drop table IF EXISTS STUDENT;
+drop table IF EXISTS CLASSROOM;
+drop table IF EXISTS SECTION;
+drop table IF EXISTS COURSE;
