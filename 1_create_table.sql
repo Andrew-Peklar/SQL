@@ -19,29 +19,29 @@ CREATE TABLE SECTION(
 	Instructor	VARCHAR(52),
 	PRIMARY KEY(CourseNo, SectionNo),
 	FOREIGN KEY(CourseNo) 
-			REFERENCES COURSE(CourseNo)
+		REFERENCES COURSE(CourseNo)
 	);
 
 CREATE TABLE STUDENT(
-	SSN			VARCHAR(52),
+	SSN		VARCHAR(52),
 	FirstName	VARCHAR(52),
 	LastName	VARCHAR(52),
 	Street		VARCHAR(52),
 	City		VARCHAR(52),
 	State		VARCHAR(52),
-	ZIP			VARCHAR(52),
+	ZIP		VARCHAR(52),
 	PRIMARY KEY(SSN)
 	);
 
 CREATE TABLE ENROLLS(
-	SSN			VARCHAR(52),
+	SSN		VARCHAR(52),
 	CourseNo	VARCHAR(52),
 	SectionNo	VARCHAR(52),
 	PRIMARY KEY(SSN, CourseNo, SectionNo),
 	FOREIGN KEY(SSN)	
-			REFERENCES	STUDENT(SSN),
+		REFERENCES	STUDENT(SSN),
 	FOREIGN KEY(CourseNo, SectionNo)	
-			REFERENCES	SECTION(CourseNo, SectionNo)
+		REFERENCES	SECTION(CourseNo, SectionNo)
 	);
 
 CREATE TABLE EXAM(
@@ -52,20 +52,20 @@ CREATE TABLE EXAM(
 	E_Time		VARCHAR(52),
 	PRIMARY KEY(CourseNo, SectionNo, ExamNo),
 	FOREIGN	KEY(CourseNo, SectionNo) 
-			REFERENCES SECTION(CourseNo, SectionNo)
+		REFERENCES SECTION(CourseNo, SectionNo)
 	);
 
 CREATE	TABLE TAKES(
-	SSN			VARCHAR(52),
+	SSN		VARCHAR(52),
 	CourseNo	VARCHAR(52),
 	SectionNo	VARCHAR(52),
 	ExamNo		VARCHAR(52),
 	Result		VARCHAR(52),
 	PRIMARY KEY(SSN, CourseNo, SectionNo, ExamNo),
 	FOREIGN	KEY(SSN)	
-			REFERENCES	STUDENT(SSN),
+		REFERENCES	STUDENT(SSN),
 	FOREIGN	KEY(CourseNo, SectionNo, ExamNo)	
-			REFERENCES EXAM(CourseNo, SectionNo, ExamNo)
+		REFERENCES EXAM(CourseNo, SectionNo, ExamNo)
 	);
 
 CREATE TABLE CLASSROOM(
@@ -83,7 +83,7 @@ CREATE TABLE CONDUCTEDIN(
 	ExamNo		VARCHAR(52),
 	PRIMARY	KEY(RoomNo, Building, CourseNo, SectionNo, ExamNo),
 	FOREIGN	KEY(RoomNo, Building)	
-			REFERENCES	CLASSROOM(RoomNo, Building),
+		REFERENCES	CLASSROOM(RoomNo, Building),
 	FOREIGN	Key(CourseNo, SectionNo, ExamNo)	
-			REFERENCES EXAM(CourseNo, SectionNo, ExamNo)
+		REFERENCES EXAM(CourseNo, SectionNo, ExamNo)
 	);
